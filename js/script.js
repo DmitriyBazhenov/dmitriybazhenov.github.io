@@ -4,6 +4,7 @@ const sectionsArray = Array.from(document.querySelectorAll("scrollto"));
 scrollToElements.forEach(function (el) {
     el.addEventListener('click', function (e) {
         e.preventDefault();
+        closeModal();
         var targetId = el.getAttribute('href');
         var target = document.querySelector(targetId);
         if (target) {
