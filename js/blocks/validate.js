@@ -61,4 +61,4 @@ phone.addEventListener ('input', function (e) {
 })
 descr.addEventListener ('input', function (e) {
     pDescr.classList.add('inp');
-})
+});
