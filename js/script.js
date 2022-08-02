@@ -1,39 +1,18 @@
-// const anchors = document.querySelectorAll('.scroll');
+const scrollToElements = document.querySelectorAll(".scroll");
+const sectionsArray = Array.from(document.querySelectorAll("scrollto"));
 
-
-// // плавный скролл
-
-// for (let anchor of anchors) {
-//   anchor.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     closeModal();
-//     const blockID = anchor.getAttribute('href').substr(1);
-    
-//     document.getElementById(blockID).scrollIntoView({
-//       behavior: 'smooth',
-//       block: 'start'
-//     })
-//   })
-// }
-
-document.querySelectorAll('.scroll').forEach(link => {
-
-  link.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeModal();
-
-      let href = this.getAttribute('href').substring(1);
-
-      const scrollTarget = document.getElementById(href);
-
-      // const topOffset = document.querySelector('.scrollto').offsetHeight;
-      const topOffset = 70; // если не нужен отступ сверху 
-      const elementPosition = scrollTarget.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - topOffset;
-
-      window.scrollBy({
-          top: offsetPosition,
-          behavior: 'smooth'
-      });
-  });
+scrollToElements.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetId = el.getAttribute('href');
+        var target = document.querySelector(targetId);
+        if (target) {
+            sectionsArray.forEach(function (section, index) {
+                if (section.id === targetId.replace('#', '')) {
+                    currentSectionIndex = index;
+                }
+            });
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
